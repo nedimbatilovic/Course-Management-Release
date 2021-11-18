@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Course_Management_Release
 {
-    public class AttendantDbContext : DbContext
+    public class CourseManagementDbContext : DbContext
     {
         public DbSet<Attendant> AttendantSet { get; set; }
         public DbSet<Course> CourseSet { get; set;}
@@ -25,6 +25,12 @@ namespace Course_Management_Release
             modelBuilder.Entity<Attendant>().Property(nameof(o.Surname)).IsRequired();
             modelBuilder.Entity<Attendant>().Property(nameof(o.Age)).IsRequired();
             base.OnModelCreating(modelBuilder);
+
+            Course c = new Course();
+            modelBuilder.Entity<Course>().HasKey(c => c.Id);
+            modelBuilder.Entity<Course>().Property(nameof(c.Name)).IsRequired();
+            modelBuilder.Entity<Course>().Property(nameof(c.DurationStart)).IsRequired();
+            modelBuilder.Entity<Course>().Property(nameof(c.DurationEnd)).IsRequired();
         }
 
 

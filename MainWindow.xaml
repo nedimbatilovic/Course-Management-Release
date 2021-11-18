@@ -6,7 +6,33 @@
         xmlns:local="clr-namespace:Course_Management_Release"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <TabControl>
+        <TabItem Name="CoursesTab" Header="Courses">
+            <DockPanel>
+                <Border DockPanel.Dock="Left"
+                BorderThickness="1"
+                Margin="5"
+                Padding="5">
+                    <StackPanel>
+                        <Label>Course Name</Label>
+                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
 
-    </Grid>
+                        <Label>Course Beginning Date</Label>
+                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label>Course Ending Date</Label>
+                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Click="AddCourse">Add</Button>
+                    </StackPanel>
+                </Border>
+
+                <DataGrid Name="dgCourse"></DataGrid>
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Name="AttendantsTab" Header="Attendants">
+            
+        </TabItem>
+    </TabControl>
 </Window>

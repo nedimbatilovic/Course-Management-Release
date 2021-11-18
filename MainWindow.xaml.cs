@@ -23,6 +23,15 @@ namespace Course_Management_Release
         public MainWindow()
         {
             InitializeComponent();
+
+            CoursesTab.DataContext = new Course();
+            dgCourse.ItemsSource = CourseSet;
+            CourseSet.Add(new Course { Name = "Deutsch", DurationStart = 1, DurationEnd = 30 });
+        }
+
+        private void AddCourse(object sender, RoutedEventArgs e)
+        {
+            CourseManagementDbContext.CourseSet.Add(CoursesTab.DataContext as Course);
         }
     }
 }
