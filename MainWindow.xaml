@@ -18,10 +18,10 @@
                         <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label>Course Beginning Date</Label>
-                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding Path=DurationStart, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label>Course Ending Date</Label>
-                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Text="{Binding Path=DurationEnd, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Button Click="AddCourse">Add</Button>
                     </StackPanel>

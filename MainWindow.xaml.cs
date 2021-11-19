@@ -20,18 +20,21 @@ namespace Course_Management_Release
     /// </summary>
     public partial class MainWindow : Window
     {
+        public CourseManagementDbContext Context { get; set; } = new();
         public MainWindow()
         {
             InitializeComponent();
+            Context.Database.EnsureCreated();
 
             CoursesTab.DataContext = new Course();
-            dgCourse.ItemsSource = CourseSet;
-            CourseSet.Add(new Course { Name = "Deutsch", DurationStart = 1, DurationEnd = 30 });
+            dgCourse.ItemsSource = Context.CourseSet.Local.ToObservableCollection();
+            Context.Add(new Course { Name = "Deutsch", DurationStart = DateTime.Parse("11/1/2021."), DurationEnd = DateTime.Parse("11/30/2021.") });
         }
 
         private void AddCourse(object sender, RoutedEventArgs e)
         {
-            CourseManagementDbContext.CourseSet.Add(CoursesTab.DataContext as Course);
+            Context.CourseSet.Add(CoursesTab.DataContext as Course);
+            Context.SaveChanges();
         }
     }
 }

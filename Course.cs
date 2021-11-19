@@ -12,6 +12,15 @@ namespace Course_Management_Release
     // ne znam zasto ovo funkcionisse samo van klase pitaj profesora
     public class Course : INotifyPropertyChanged
     {
+        private int _id;
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+            }
+        }
         private string _name;
         public string Name
         {
