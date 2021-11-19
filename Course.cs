@@ -32,6 +32,17 @@ namespace Course_Management_Release
             }
         }
 
+        private int _monthlyPrice;
+        public int MonthlyPrice
+        {
+            get => _monthlyPrice;
+            set
+            {
+                _monthlyPrice = value;
+                Change("MonthlyPrice");
+            }
+        }
+
         private DateTime _durationStart;
         public DateTime DurationStart
         {

@@ -9,13 +9,13 @@
     <TabControl>
         <TabItem Name="CoursesTab" Header="Courses">
             <DockPanel>
-                <Border DockPanel.Dock="Left"
-                BorderThickness="1"
-                Margin="5"
-                Padding="5">
+                <Border>
                     <StackPanel>
                         <Label>Course Name</Label>
                         <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label>Monthly Price</Label>
+                        <TextBox Text="{Binding Path=MonthlyPrice, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label>Course Beginning Date</Label>
                         <TextBox Text="{Binding Path=DurationStart, UpdateSourceTrigger=PropertyChanged}"/>
@@ -27,11 +27,32 @@
                     </StackPanel>
                 </Border>
 
-                <DataGrid Name="dgCourse"></DataGrid>
+                <DataGrid Name="dgCourse" IsReadOnly="True"/>
             </DockPanel>
         </TabItem>
 
         <TabItem Name="AttendantsTab" Header="Attendants">
+            <DockPanel>
+                <Border>
+                    <StackPanel>
+                        <Label>Attendant Name</Label>
+                        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label>Attendant Surname</Label>
+                        <TextBox Text="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Label>Attendant Age</Label>
+                        <TextBox Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <Button Click="AddAttendant">Add</Button>
+                    </StackPanel>
+                </Border>
+
+                <DataGrid Name="dgAttendants" IsReadOnly="True"/>
+            </DockPanel>
+        </TabItem>
+
+        <TabItem Name="EnrollmentTab" Header="Enrollment">
             
         </TabItem>
     </TabControl>

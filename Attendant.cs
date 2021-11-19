@@ -10,8 +10,8 @@ namespace Course_Management_Release
     public class Attendant : INotifyPropertyChanged
     {
 
-        private string _id;
-        public string Id
+        private int _id;
+        public int Id
         {
             get => _id;
             set

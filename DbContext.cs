@@ -19,18 +19,19 @@ namespace Course_Management_Release
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Course c = new Course();
+            modelBuilder.Entity<Course>().HasKey(c => c.Id);
+            modelBuilder.Entity<Course>().Property(nameof(c.Name)).IsRequired();
+            modelBuilder.Entity<Course>().Property(nameof(c.MonthlyPrice)).IsRequired();
+            modelBuilder.Entity<Course>().Property(nameof(c.DurationStart)).IsRequired();
+            modelBuilder.Entity<Course>().Property(nameof(c.DurationEnd)).IsRequired();
+
             Attendant o = new Attendant();
             modelBuilder.Entity<Attendant>().HasKey(o => o.Id);
             modelBuilder.Entity<Attendant>().Property(nameof(o.Name)).IsRequired();
             modelBuilder.Entity<Attendant>().Property(nameof(o.Surname)).IsRequired();
             modelBuilder.Entity<Attendant>().Property(nameof(o.Age)).IsRequired();
-            base.OnModelCreating(modelBuilder);
-
-            Course c = new Course();
-            modelBuilder.Entity<Course>().HasKey(c => c.Id);
-            modelBuilder.Entity<Course>().Property(nameof(c.Name)).IsRequired();
-            modelBuilder.Entity<Course>().Property(nameof(c.DurationStart)).IsRequired();
-            modelBuilder.Entity<Course>().Property(nameof(c.DurationEnd)).IsRequired();
+            base.OnModelCreating(modelBuilder);          
         }
 
 

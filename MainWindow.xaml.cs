@@ -27,14 +27,38 @@ namespace Course_Management_Release
             Context.Database.EnsureCreated();
 
             CoursesTab.DataContext = new Course();
+            Context.CourseSet.ToList();
             dgCourse.ItemsSource = Context.CourseSet.Local.ToObservableCollection();
-            Context.Add(new Course { Name = "Deutsch", DurationStart = DateTime.Parse("11/1/2021."), DurationEnd = DateTime.Parse("11/30/2021.") });
+
+            AttendantsTab.DataContext = new Attendant();
+            Context.AttendantSet.ToList();
+            dgAttendants.ItemsSource = Context.AttendantSet.Local.ToObservableCollection();
+            
         }
 
         private void AddCourse(object sender, RoutedEventArgs e)
         {
-            Context.CourseSet.Add(CoursesTab.DataContext as Course);
-            Context.SaveChanges();
+            if (!Context.CourseSet.Where(x => x.Name == Name).Any())
+            {
+                Context.CourseSet.Add(CoursesTab.DataContext as Course);
+                Context.SaveChanges();
+            } else
+            {
+                throw new Exception("already exists");
+            }         
+        }
+
+        private void AddAttendant(object sender, RoutedEventArgs e)
+        {
+            if (!Context.AttendantSet.Where(x => x.Name == Name).Any())
+            {
+                Context.AttendantSet.Add(AttendantsTab.DataContext as Attendant);
+                Context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("already exists");
+            }     
         }
     }
 }
