@@ -53,7 +53,9 @@
         </TabItem>
 
         <TabItem Name="EnrollmentTab" Header="Enrollment">
-            
+            <DockPanel>
+                
+            </DockPanel>
         </TabItem>
     </TabControl>
 </Window>
